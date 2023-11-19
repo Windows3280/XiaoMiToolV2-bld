@@ -15,11 +15,6 @@ jobs:
     runs-on: windows-latest
     uses: Windows3280/XiaoMiToolV2-bld
     steps:
-        
-    - name: Initialize repo
-      run: |
-      cd XiaoMiTool-bld
-      id: pwd
 
     - name: Gradlew building
       run: |

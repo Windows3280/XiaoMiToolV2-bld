@@ -18,10 +18,10 @@ jobs:
 
     - name: Gradlew building
       run: |
-      ${{ github.event.inputs.GRADLEW_RUN }}"
-      dir
-      dir -w
-      dir -s
+      "${{ github.event.inputs.GRADLEW_RUN }}"
+      "dir"
+      "dir -w"
+      "dir -s"
       id: pwd
 
     - name: Upload to Release

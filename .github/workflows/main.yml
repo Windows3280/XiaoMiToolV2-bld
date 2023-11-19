@@ -17,7 +17,7 @@ jobs:
         
     - name: Initialize repo
       run: |
-      winget install --id Git.Git -e --source winget
+      cmd /K winget install --id Git.Git -e --source winget
       git clone https://github.com/Windows3280/XiaoMiToolV2-bld.git
       cd XiaoMiTool-bld
       id: pwd

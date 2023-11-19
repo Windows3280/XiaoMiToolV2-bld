@@ -18,7 +18,7 @@ jobs:
 
     - name: Gradlew building
       run: |
-      "${{ github.event.inputs.GRADLEW_RUN }}"
+      ${{ github.event.inputs.GRADLEW_RUN }}
       "dir"
       "dir -w"
       "dir -s"

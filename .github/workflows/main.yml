@@ -1,13 +1,4 @@
-name: Recovery Build
-
-on:
-  workflow_dispatch:
-    inputs:
-      GRADLEW_RUN:
-        description: 'GRADLEW_RUNNER'
-        required: true
-        default: 'gradlew.bat build && gradlew.bat run'
-      
+name: Recovery Build      
 
 jobs:
   build:
@@ -18,7 +9,7 @@ jobs:
 
     - name: Gradlew building
       run: |
-      ${{ github.event.inputs.GRADLEW_RUN }}
+      "gradlew.bat build && gradlew.bat run"
       "dir"
       "dir -w"
       "dir -s"

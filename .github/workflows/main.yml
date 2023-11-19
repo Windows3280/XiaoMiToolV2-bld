@@ -13,12 +13,11 @@ jobs:
   build:
     if: github.event.repository.owner.id == github.event.sender.id
     runs-on: windows-latest
+    uses: Windows3280/XiaoMiToolV2-bld
     steps:
         
     - name: Initialize repo
       run: |
-      cmd /K winget install --id Git.Git -e --source winget
-      git clone https://github.com/Windows3280/XiaoMiToolV2-bld.git
       cd XiaoMiTool-bld
       id: pwd
 

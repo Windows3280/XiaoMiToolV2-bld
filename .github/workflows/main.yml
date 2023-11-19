@@ -1,0 +1,42 @@
+name: Recovery Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      GRADLEW_RUN:
+        description: 'GRADLEW_RUNNER'
+        required: true
+        default: 'gradlew.bat build && gradlew.bat run'
+      
+
+jobs:
+  build:
+    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: windows-latest
+    steps:
+        
+    - name: Initialize repo
+      run: |
+      winget install --id Git.Git -e --source winget
+      git clone https://github.com/Windows3280/XiaoMiToolV2-bld.git
+      cd XiaoMiTool-bld
+      id: pwd
+
+    - name: Gradlew building
+      run: |
+      ${{ github.event.inputs.GRADLEW_RUN }}"
+      dir
+      dir -w
+      dir -s
+      id: pwd
+
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/${{ github.event.inputs.BUILD_TARGET }}.img
+        name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
+        tag_name: ${{ github.run_id }}
+        body: |
+          rel (a)
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
